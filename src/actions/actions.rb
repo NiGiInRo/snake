@@ -47,6 +47,7 @@ module Actions
     end
 
     def end_game(state)
-        
+        state.game_finished = true
+        state
     end
 end
