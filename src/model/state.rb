@@ -1,5 +1,12 @@
 # Representacion del estado del juego
 module Model
+    
+    module Direction
+        UP = :up
+        DOWN = :down
+        LEFT = :left
+        RIGHT = :right
+    end
 
     class Coord < Struct.new(:row , :col)
     
@@ -18,7 +25,7 @@ module Model
     
     end
 
-    class State < Struct.new(:snake, :food, :grid)
+    class State < Struct.new(:snake, :food, :grid, :next_direction, :game_finished)
     
     end
 
@@ -26,7 +33,9 @@ module Model
         Model::State.new(
             Model::Snake.new([Model::Coord.new(1,1), Model::Coord.new(0,1)]), #posicion de la cabeza y cola de la Snake
             Model::Food.new(4,4), # posicion de Comida de la Snake
-            Model::Grid.new(8, 12) # cuantas filas y columnas 
+            Model::Grid.new(8, 12) # cuantas filas y columnas,
+            Direction::DOWN,
+            false
         )
     end
 end
